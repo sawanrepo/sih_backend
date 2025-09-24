@@ -2,13 +2,15 @@ import pandas as pd
 import numpy as np
 import joblib
 
+imputer = joblib.load("ensemble_imputer.pkl") #kept outside fxn for fast response.
+
 def predict_missing(user_row: dict):
     """
     Predict missing numeric values in a single user row using the trained IterativeImputer.
     Works with one-hot encoded 'product_type' and transformed 'weight_kg' and 'energy_mix_pct_renewables'.
     """
 
-    imputer = joblib.load("ensemble_imputer.pkl")
+    
 
     user_df = pd.DataFrame([user_row])
 
